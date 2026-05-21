@@ -12,7 +12,6 @@ public class Main {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         int opcion = 0;
  
-        // Menu repetitivo - no para hasta que el usuario elija 6
         while (opcion != 6) {
  
             System.out.println("\n--- MENU BIBLIOTECA ---");
