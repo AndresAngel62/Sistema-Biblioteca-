@@ -15,16 +15,12 @@ public class Biblioteca {
         libros[3] = new Libro(4, "Harry Potter");
         libros[4] = new Libro(5, "wigetta");
     }
-
-
     public void consultarLibros() {
         System.out.println("\n--- CATALOGO DE LIBROS ---");
         for (int i = 0; i < totalLibros; i++) {
             libros[i].mostrarInfo();
         }
     }
-
-
     public Libro consultarLibro(int id) {
         for (int i = 0; i < totalLibros; i++) {
             if (libros[i].id == id) {
@@ -33,27 +29,19 @@ public class Biblioteca {
         }
         return null;
     }
-
-
     public void prestarLibros(int id) {
         Libro libro = consultarLibro(id);
-
         if (libro == null) {
             System.out.println("No se encontro el libro con ID " + id);
             return;
         }
-
-
         if (libro.verDisponibilidad() == false) {
             System.out.println("El libro no esta disponible");
             return;
         }
-
         libro.setDisponibilidad(false);
         System.out.println("Libro prestado: " + libro.titulo);
     }
-
-
     public void recibirDevolucion(int id, LocalDate fechaLimite) {
         Libro libro = consultarLibro(id);
 
@@ -61,16 +49,12 @@ public class Biblioteca {
             System.out.println("No se encontro el libro con ID " + id);
             return;
         }
-
         if (libro.verDisponibilidad() == true) {
             System.out.println("Ese libro no estaba prestado");
             return;
         }
-
         libro.setDisponibilidad(true);
         System.out.println("Libro devuelto: " + libro.titulo);
-
-
         LocalDate hoy = LocalDate.now();
         if (fechaLimite.isBefore(hoy)) {
             long dias = java.time.temporal.ChronoUnit.DAYS.between(fechaLimite, hoy);
